@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="GuestsBook.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/Styles.css" rel="stylesheet" />
+    <%: System.Web.Optimization.Scripts.Render("~/bundle/validation") %>
+</head>
+<body>
+    <form id="main" runat="server">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" runat="server">
+            <a class="navbar-brand" href="./Default.aspx">
+                <img src="../images/logo.png"></a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar" 
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" runat="server">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbar" class="navbar-collapse collapse" runat="server">
+                <ul class="navbar-nav mr-auto" runat="server">
+                    <li class="nav-item active"><a class="nav-link" href="./Default.aspx">Home</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="./comments.aspx">Comments</a></li>
+                    <asp:LoginView ID="ctlRightNavbar" EnableViewState="false" runat="server">
+                        <AnonymousTemplate>
+                            <li class="nav-item active" runat="server">
+                                <a id="loginLink" class="nav-link" href="./login.aspx" runat="server">Log in</a>
+
+                            </li>
+                            <li class="nav-item active" runat="server">
+                                <a id="registrationLink" class="nav-link" href="./registration.aspx" runat="server">Registration</a>
+
+                            </li>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <li class="nav-item active" runat="server">
+                                <a class="nav-link active font-italic">
+                                    Hello, <asp:LoginName ID="LoginName" CssClass="text-warning" runat="server" />
+                                </a>
+                            </li>
+                            <li class="nav-item active" runat="server">
+                                <asp:LoginStatus ID="LoginStatus" LogoutAction="Redirect" CssClass="nav-link"
+                                    LogoutPageUrl="/" OnLoggingOut="LoginStatus_LoggingOut" LogoutText="Exit" runat="server" />
+                            </li>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </ul>
+            </div>
+        </nav>
+        <div class="container body-content mt-5 p-5">
+            <asp:ContentPlaceHolder ID="BodyContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Guest's book by Mikhael Sidorovskyi</p>
+            </footer>
+        </div>
+    </form>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

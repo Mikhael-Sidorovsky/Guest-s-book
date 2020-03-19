@@ -1,0 +1,15 @@
+﻿body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+    background-color:lightcyan;
+}
+
+.navbar-nav li {
+    padding-left: 30px;
+}
+
+.nav-link {
+    font-size: 1.1em
+}
